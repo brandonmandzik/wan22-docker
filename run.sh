@@ -78,7 +78,13 @@ docker-compose run --rm wan22 python generate.py \
     --offload_model True \
     --convert_model_dtype \
     --prompt "$PROMPT" \
-    --save_path /Wan2.2/outputs
+    --save_file /Wan2.2/outputs \
+    --t5_cpu \
+    --sample_steps 40 \
+    --frame_num 49 \
+    --sample_guide_scale 5.0 \
+    --sample_shift 7.0 \
+    --base_seed 42
 
 echo ""
 echo "=== Inference Complete! ==="
