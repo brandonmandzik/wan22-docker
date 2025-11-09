@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  wan22:
+    # Image source determined by MODE in .env file
+    # MODE=build: builds from Dockerfile
+    # MODE=pull: pulls from ${DOCKER_IMAGE}
+    image: ${LOCAL_IMAGE_TAG:-wan22-t2v:latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wan22-inference
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      # Wan2.2 working directory (checkpoints, outputs, everything)
+      - /opt/Wan2.2:/Wan2.2
+    working_dir: /workspace/wan2.2
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
