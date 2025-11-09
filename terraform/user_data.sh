@@ -10,6 +10,16 @@ exec 2>&1
 
 echo "Starting user data script..."
 
+echo "Installing system dependencies..."
+apt-get update
+# Wait for dpkg lock to be released (handles unattended-upgrades)
+echo "Waiting for dpkg lock to be available..."
+while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do
+  echo "Waiting for other package managers to finish..."
+  sleep 5
+done
+apt-get install -y sysstat fio
+
 # Install docker-compose if not already installed
 if ! command -v docker-compose &> /dev/null; then
   echo "Installing docker-compose..."
