@@ -22,6 +22,13 @@ usermod -aG docker ubuntu
 
 # Verify NVIDIA Docker runtime
 echo "Verifying NVIDIA Docker runtime..."
+
+# Test 1: Host GPU access
+echo "Testing host GPU access..."
 nvidia-smi
+
+# Test 2: Docker container GPU access (critical for Wan2.2)
+echo "Testing Docker container GPU access..."
+docker run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu22.04 nvidia-smi
 
 echo "User data script completed successfully!"
