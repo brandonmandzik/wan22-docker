@@ -11,7 +11,7 @@ if [ ! -d "/Wan2.2/checkpoints/Wan2.2-T2V-A14B" ]; then
     echo "Models not found. Downloading from HuggingFace Hub..."
     echo "This will download ~126GB and may take 15-25 minutes..."
 
-    huggingface-cli download \
+    hf download \
         Wan-AI/Wan2.2-T2V-A14B \
         --local-dir /Wan2.2/checkpoints/Wan2.2-T2V-A14B \
 

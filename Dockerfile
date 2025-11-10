@@ -22,6 +22,8 @@ WORKDIR /workspace/wan2.2
 RUN pip install --no-cache-dir psutil packaging ninja
 ENV TORCH_CUDA_ARCH_LIST="8.9;9.0"
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements_s2v.txt
+RUN pip install --no-cache-dir -r requirements_animate.txt
 
 # Install HuggingFace CLI for model downloads
 RUN pip install --no-cache-dir "huggingface_hub[cli]"
