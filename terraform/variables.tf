@@ -13,7 +13,7 @@ variable "availability_zone" {
 variable "instance_type" {
   description = "EC2 instance type (g6e.4xlarge or p5.4xlarge recommended)"
   type        = string
-  default     = "g6e.4xlarge"
+  default     = "g6e.2xlarge"
 
   validation {
     condition     = contains(["g6e.2xlarge", "g6e.4xlarge", "p5.4xlarge", "p4d.24xlarge"], var.instance_type)
