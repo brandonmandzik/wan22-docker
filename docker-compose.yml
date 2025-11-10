@@ -8,8 +8,15 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: wan22-inference
+    ipc: host
+    netwrork: host
+    gpus: all
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
+      - PYTORCH_CUDA_ALLOC_CONF: "expandable_segments:True"
+    ulimits:
+      memlock: -1
+      stack: 67108864
     volumes:
       # Wan2.2 working directory (checkpoints, outputs, everything)
       - /opt/Wan2.2:/Wan2.2
