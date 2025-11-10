@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   wan22:
     # Image source determined by MODE in .env file
