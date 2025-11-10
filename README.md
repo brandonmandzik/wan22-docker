@@ -51,7 +51,7 @@ terraform apply
 aws ssm start-session --target $(terraform output -raw instance_id)
 
 # 3. Clone repository
-git clone <your-repo-url>
+git clone https://github.com/brandonmandzik/wan22-docker.git
 cd wan22-docker
 
 # 4. Configure for build mode
@@ -59,7 +59,7 @@ cp .env.example .env
 # Edit .env: Set MODE=build
 
 # 5. Run inference (builds image automatically on first run)
-./run.sh "A serene lake at sunset"
+./run.sh "Warmup"
 # First run: ~25-30 minutes (builds image + inference)
 # Subsequent runs: ~5-10 minutes (inference only)
 ```

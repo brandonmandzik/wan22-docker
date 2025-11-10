@@ -23,11 +23,11 @@ RUN pip install --no-cache-dir flash-attn --no-build-isolation
 RUN pip install --no-cache-dir -U "huggingface_hub[cli]"
 
 # Set environment variables for HuggingFace cache
-ENV HF_HOME=/models
-ENV TRANSFORMERS_CACHE=/models
+ENV HF_HOME=/Wan2.2
+ENV TRANSFORMERS_CACHE=/Wan2.2
 
-# Create output and model directories
-RUN mkdir -p /outputs /models
+# Create Wan2.2 directory for checkpoints and outputs
+RUN mkdir -p /Wan2.2/checkpoints /Wan2.2/outputs
 
 # Copy entrypoint script
 COPY entrypoint.sh /entrypoint.sh
