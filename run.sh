@@ -71,7 +71,7 @@ echo "Running inference with image: $IMAGE_TO_USE"
 echo ""
 
 # Run inference
-docker-compose run --rm wan22 python generate.py \
+docker-compose run --rm wan22 python3 generate.py \
     --task t2v-A14B \
     --size "$SIZE" \
     --ckpt_dir /Wan2.2/checkpoints/Wan2.2-T2V-A14B \
