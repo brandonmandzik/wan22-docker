@@ -16,12 +16,12 @@ RUN git clone https://github.com/Wan-Video/Wan2.2.git /workspace/wan2.2
 
 # Install Python dependencies
 WORKDIR /workspace/wan2.2
-RUN pip install --no-cache-dir -r requirements.txt
 
 # Install flash-attn with maximum parallelization (matches user_data_ami_setup_14b.sh)
 # Ninja enables parallel builds (13-16 cores), TORCH_CUDA_ARCH_LIST optimizes for L40S/H100 only
-RUN pip install --no-cache-dir psutil packaging ninja && \
-    TORCH_CUDA_ARCH_LIST="8.9;9.0" pip install --no-cache-dir flash-attn --no-build-isolation
+RUN pip install --no-cache-dir psutil packaging ninja
+ENV TORCH_CUDA_ARCH_LIST="8.9;9.0"
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Install HuggingFace CLI for model downloads
 RUN pip install --no-cache-dir -U "huggingface_hub[cli]"
