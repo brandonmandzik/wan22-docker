@@ -24,7 +24,7 @@ ENV TORCH_CUDA_ARCH_LIST="8.9;9.0"
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install HuggingFace CLI for model downloads
-RUN pip install --no-cache-dir -U "huggingface_hub[cli]"
+RUN pip install --no-cache-dir "huggingface_hub[cli]"
 
 # Set environment variables for HuggingFace cache
 ENV HF_HOME=/Wan2.2

@@ -59,7 +59,7 @@ cp .env.example .env
 # Edit .env: Set MODE=build
 
 # 5. Run inference (builds image automatically on first run)
-./run.sh "Warmup" 
+sudo 
 # First run: ~25-30 minutes (builds image + inference)
 # Subsequent runs: ~5-10 minutes (inference only)
 ```
