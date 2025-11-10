@@ -51,7 +51,7 @@ terraform apply
 aws ssm start-session --target $(terraform output -raw instance_id)
 
 # 3. Clone repository
-Sudo git clone https://github.com/brandonmandzik/wan22-docker.git
+sudo git clone https://github.com/brandonmandzik/wan22-docker.git
 cd wan22-docker
 
 # 4. Configure for build mode
