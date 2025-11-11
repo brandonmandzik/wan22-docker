@@ -24,19 +24,14 @@ echo "Registry: $REGISTRY_IMAGE"
 echo ""
 
 # Build the image
-echo "Step 1/3: Building Docker image..."
+echo "Step 1/2: Building Docker image..."
 echo "This will take 20-30 minutes (installs dependencies and compiles flash-attn)"
 docker-compose build
 
-# Tag for registry
-echo ""
-echo "Step 2/3: Tagging image for registry..."
-docker tag wan22-t2v:latest "$REGISTRY_IMAGE"
-
 # Push to registry
 echo ""
-echo "Step 3/3: Pushing to registry..."
-echo "Pushing 38GB image - this may take 10-20 minutes..."
+echo "Step 2/2: Pushing to registry..."
+echo "Pushing image - this may take 10-20 minutes..."
 docker push "$REGISTRY_IMAGE"
 
 echo ""
