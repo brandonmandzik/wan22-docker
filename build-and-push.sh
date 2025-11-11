@@ -25,8 +25,8 @@ echo ""
 
 # Build the image
 echo "Step 1/3: Building Docker image..."
-echo "This will take 20-30 minutes (downloads 28GB model weights)"
-docker build -t wan22-t2v:latest .
+echo "This will take 20-30 minutes (installs dependencies and compiles flash-attn)"
+docker-compose build
 
 # Tag for registry
 echo ""
