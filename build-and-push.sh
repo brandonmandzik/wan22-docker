@@ -25,7 +25,7 @@ echo ""
 
 # Build the image
 echo "Step 1/2: Building Docker image..."
-echo "This will take 20-30 minutes (installs dependencies and compiles flash-attn)"
+echo "This will take 60-75 minutes (installs dependencies and compiles flash-attn)"
 docker-compose build
 
 # Push to registry
