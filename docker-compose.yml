@@ -1,9 +1,9 @@
 services:
   wan22:
-    # Image source determined by MODE in .env file
-    # MODE=build: builds from Dockerfile
-    # MODE=pull: pulls from ${DOCKER_IMAGE}
-    image: ${LOCAL_IMAGE_TAG:-wan22-t2v:latest}
+    # Image tag used for both build and pull modes
+    # MODE=build: builds from Dockerfile with this tag
+    # MODE=pull: pulls this tag from registry
+    image: ${DOCKER_IMAGE:-ghcr.io/your-org/wan22-t2v:latest}
     build:
       context: .
       dockerfile: Dockerfile

@@ -11,8 +11,7 @@ if [ -f .env ]; then
 else
     echo "Warning: .env file not found. Using defaults."
     MODE="build"
-    LOCAL_IMAGE_TAG="wan22-t2v:latest"
-    DOCKER_IMAGE="ghcr.io/your-org/wan22-t2v:v2.2"
+    DOCKER_IMAGE="ghcr.io/your-org/wan22-t2v:latest"
 fi
 
 # Default parameters
@@ -34,14 +33,13 @@ case "$MODE" in
     build)
         echo "MODE=build: Building image locally if needed..."
         # Check if image exists
-        if ! docker image inspect "$LOCAL_IMAGE_TAG" &> /dev/null; then
+        if ! docker image inspect "$DOCKER_IMAGE" &> /dev/null; then
             echo "Image not found. Building from Dockerfile..."
             echo "This will take 20-30 minutes on first run..."
             docker-compose build
         else
-            echo "Image found: $LOCAL_IMAGE_TAG"
+            echo "Image found: $DOCKER_IMAGE"
         fi
-        IMAGE_TO_USE="$LOCAL_IMAGE_TAG"
         ;;
 
     pull)
@@ -54,9 +52,6 @@ case "$MODE" in
         else
             echo "Image already present: $DOCKER_IMAGE"
         fi
-        # Override docker-compose image
-        export LOCAL_IMAGE_TAG="$DOCKER_IMAGE"
-        IMAGE_TO_USE="$DOCKER_IMAGE"
         ;;
 
     *)
@@ -67,7 +62,7 @@ case "$MODE" in
 esac
 
 echo ""
-echo "Running inference with image: $IMAGE_TO_USE"
+echo "Running inference with image: $DOCKER_IMAGE"
 echo ""
 
 # Run inference
