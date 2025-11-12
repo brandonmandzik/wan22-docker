@@ -4,9 +4,9 @@
 
 set -e
 
-# Log all output (duplicated: terminal + file)
-exec > >(tee -a /var/log/my-log.log)
-exec 2>&
+# Log all output
+exec > >(tee /var/log/my-log.log)
+exec 2>&1
 
 echo "Starting user data script..."
 

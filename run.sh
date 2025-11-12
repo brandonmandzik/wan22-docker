@@ -5,6 +5,10 @@
 
 set -e
 
+# Log all output (duplicated: terminal + file)
+exec > >(tee -a /var/log/my-log.log)
+exec 2>&1
+
 
 # Load configuration
 if [ -f .env ]; then
