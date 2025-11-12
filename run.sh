@@ -5,9 +5,6 @@
 
 set -e
 
-# Log all output
-exec >> /var/log/my-log.log 2>&1
-
 
 # Load configuration
 if [ -f .env ]; then
