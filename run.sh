@@ -5,9 +5,9 @@
 
 set -e
 
-# Log all output (duplicated: terminal + file)
-exec > >(tee -a /var/log/my-log.log)
-exec 2>&1
+# Start background logger
+exec 3>&1 4>&2
+exec > >(tee -a /var/log/my-log.log >&3) 2>&1
 
 
 # Load configuration
