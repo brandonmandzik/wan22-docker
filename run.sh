@@ -5,9 +5,8 @@
 
 set -e
 
-# Log all output
-exec > >(tee /var/log/my-log.log)
-exec 2>&1
+# Log all output while preserving TTY for progress bars
+exec script -q -f /var/log/my-log.log
 
 
 # Load configuration
@@ -70,12 +69,8 @@ echo ""
 echo "Running inference with image: $DOCKER_IMAGE"
 echo ""
 
-# Ensure container is running (idempotent - does nothing if already up)
-docker-compose up -d
-sleep 5
-
-# Run inference in persistent container
-docker exec wan22-inference python3 generate.py \
+# Run inference using docker-compose run (reuses container across runs)
+docker-compose run -rm wan22 python3 generate.py \
     --task t2v-A14B \
     --size "$SIZE" \
     --ckpt_dir /Wan2.2/checkpoints/Wan2.2-T2V-A14B \
