@@ -5,8 +5,8 @@
 
 set -e
 
-# Log all output while preserving TTY for progress bars
-exec script -q -f /var/log/my-log.log
+# Log all output
+exec >> /var/log/my-log.log 2>&1
 
 
 # Load configuration
