@@ -5,7 +5,7 @@
 set -e
 
 # Log all output
-exec > >(tee /var/log/user-data.log)
+exec > >(tee /var/log/my-log.log)
 exec 2>&1
 
 echo "Starting user data script..."
