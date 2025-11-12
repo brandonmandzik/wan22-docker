@@ -9,7 +9,7 @@ echo "=== Wan2.2 Container Entrypoint ==="
 # Check if models are downloaded
 if [ ! -d "/Wan2.2/checkpoints/Wan2.2-T2V-A14B" ]; then
     echo "Models not found. Downloading from HuggingFace Hub..."
-    echo "This will download ~126GB and may take 15-25 minutes..."
+    echo "This will download ~126GB and may take ~15 minutes..."
 
     hf download \
         Wan-AI/Wan2.2-T2V-A14B \

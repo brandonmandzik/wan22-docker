@@ -35,7 +35,7 @@ case "$MODE" in
         # Check if image exists
         if ! docker image inspect "$DOCKER_IMAGE" &> /dev/null; then
             echo "Image not found. Building from Dockerfile..."
-            echo "This will take 20-30 minutes on first run..."
+            echo "This will take 60-75 minutes on first run..."
             docker-compose build
         else
             echo "Image found: $DOCKER_IMAGE"
@@ -47,7 +47,7 @@ case "$MODE" in
         # Pull image if not already present
         if ! docker image inspect "$DOCKER_IMAGE" &> /dev/null; then
             echo "Pulling image: $DOCKER_IMAGE"
-            echo "This will download ~8GB (may take 2-3 minutes)..."
+            echo "This will download ~30GB (may take 10 minutes)..."
             docker pull "$DOCKER_IMAGE"
         else
             echo "Image already present: $DOCKER_IMAGE"
