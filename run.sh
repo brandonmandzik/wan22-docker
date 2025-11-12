@@ -5,13 +5,6 @@
 
 set -e
 
-# If not already in a script session, restart with script
-if [ -z "$SCRIPT_RUNNING" ]; then
-    export SCRIPT_RUNNING=1
-    exec script -q -a -f /var/log/my-log.log -c "$0 $*"
-fi
-
-
 # Load configuration
 if [ -f .env ]; then
     source .env
