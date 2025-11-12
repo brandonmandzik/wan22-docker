@@ -5,9 +5,11 @@
 
 set -e
 
-# Start background logger
-exec 3>&1 4>&2
-exec > >(tee -a /var/log/my-log.log >&3) 2>&1
+# If not already in a script session, restart with script
+if [ -z "$SCRIPT_RUNNING" ]; then
+    export SCRIPT_RUNNING=1
+    exec script -q -a -f /var/log/my-log.log -c "$0 $*"
+fi
 
 
 # Load configuration
