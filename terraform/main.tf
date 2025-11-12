@@ -64,6 +64,34 @@ resource "aws_iam_role_policy_attachment" "ssm_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
+# S3 policy for uploading/downloading video outputs
+resource "aws_iam_role_policy" "s3_access" {
+  name = "wan22-s3-access"
+  role = aws_iam_role.ssm_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:DeleteObject"
+        ]
+        Resource = "arn:aws:s3:::${var.s3_bucket_name}/*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:ListBucket"
+        ]
+        Resource = "arn:aws:s3:::${var.s3_bucket_name}"
+      }
+    ]
+  })
+}
+
 # Instance profile for EC2
 resource "aws_iam_instance_profile" "ssm_profile" {
   name = "wan22-ssm-profile"

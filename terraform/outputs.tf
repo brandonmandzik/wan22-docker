@@ -17,3 +17,8 @@ output "ssm_connection_command" {
   description = "AWS Systems Manager command to connect to the instance"
   value       = "aws ssm start-session --target ${aws_instance.wan22_inference.id}"
 }
+
+output "s3_bucket_name" {
+  description = "S3 bucket name for video outputs"
+  value       = var.s3_bucket_name
+}

@@ -20,3 +20,9 @@ variable "instance_type" {
     error_message = "Instance type must be a GPU instance suitable for Wan2.2 (g6e.4xlarge, p5.4xlarge, or p4d.24xlarge)."
   }
 }
+
+variable "s3_bucket_name" {
+  description = "Name of existing S3 bucket for storing video outputs"
+  type        = string
+  default = "wan22-video-outputs"
+}

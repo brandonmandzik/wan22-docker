@@ -28,6 +28,7 @@ services:
     working_dir: /workspace/wan2.2
     stdin_open: true
     tty: true
+    command: ["tail", "-f", "/dev/null"]
     deploy:
       resources:
         reservations:
