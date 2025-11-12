@@ -13,7 +13,7 @@ services:
     gpus: all
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
-      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - PYTORCH_ALLOC_CONF=expandable_segments:True
     ulimits:
       memlock: -1
       stack: 67108864

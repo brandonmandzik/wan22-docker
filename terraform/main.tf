@@ -14,7 +14,8 @@ provider "aws" {
 # Deep Learning Base AMI with Single CUDA (Ubuntu 22.04)
 # AMI: Deep Learning Base OSS Nvidia Driver GPU AMI (Ubuntu 22.04)
 locals {
-  dlami_id = "ami-0c9c917c544c180e8"
+  # dlami_id = "ami-0c9c917c544c180e8
+  dlami_id = "ami-06b6285d2e0210615" # Custom
 }
 
 # Security group for EC2 instance (SSM - no inbound ports needed)
@@ -84,7 +85,7 @@ resource "aws_instance" "wan22_inference" {
   iam_instance_profile   = aws_iam_instance_profile.ssm_profile.name
 
   root_block_device {
-    volume_size = 200
+    volume_size = 250
     volume_type = "gp3"
   }
 
