@@ -71,7 +71,7 @@ echo ""
 
 # Run inference using docker-compose run (reuses container across runs)
 docker compose up wan22
-docker-compose exec# wan22 python3 generate.py \
+docker-compose exec wan22 python3 generate.py \
     --task t2v-A14B \
     --size "$SIZE" \
     --ckpt_dir /Wan2.2/checkpoints/Wan2.2-T2V-A14B \
