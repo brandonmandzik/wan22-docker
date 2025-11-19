@@ -6,8 +6,8 @@
 set -e
 
 # Log all output
-exec > >(tee /var/log/my-log.log)
-exec 2>&1
+# exec > >(tee /var/log/my-log.log)
+# exec 2>&1
 
 # Load configuration
 if [ -f .env ]; then
