@@ -22,6 +22,7 @@ fi
 PROMPT="${1:-A serene lake at sunset with mountains in the background}"
 SIZE="${2:-832*480}"
 OUTPUT_DIR="/opt/Wan2.2/outputs"
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 # Create output directory
 mkdir -p "$OUTPUT_DIR"
@@ -73,7 +74,7 @@ echo ""
 # Start container and wait for entrypoint to complete
 echo "Starting container and waiting for entrypoint..."
 docker compose up -d wan22
-docker compose logs -f wan22 | grep -m 1 -E "(Models download complete!|Models found in cache)"
+docker compose logs -f wan22 | grep -m 1 -E "(Model download complete!|Models found in cache)"
 echo "Entrypoint completed. Running inference..."
 
 # Execute inference command
@@ -84,7 +85,7 @@ docker compose exec wan22 python3 generate.py \
     --offload_model True \
     --convert_model_dtype \
     --prompt "$PROMPT" \
-    --save_file /Wan2.2/outputs \
+    --save_file /Wan2.2/outputs/video_${TIMESTAMP}.mp4 \
     --t5_cpu \
     --sample_steps 40 \
     --frame_num 49 \
