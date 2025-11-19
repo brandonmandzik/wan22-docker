@@ -40,7 +40,7 @@ case "$MODE" in
         if ! docker image inspect "$DOCKER_IMAGE" &> /dev/null; then
             echo "Image not found. Building from Dockerfile..."
             echo "This will take 60-75 minutes on first run..."
-            docker-compose build
+            docker compose build
         else
             echo "Image found: $DOCKER_IMAGE"
         fi
@@ -69,9 +69,15 @@ echo ""
 echo "Running inference with image: $DOCKER_IMAGE"
 echo ""
 
-# Run inference using docker-compose run (reuses container across runs)
-docker compose up wan22
-docker-compose exec wan22 python3 generate.py \
+
+# Start container and wait for entrypoint to complete
+echo "Starting container and waiting for entrypoint..."
+docker compose up -d wan22
+docker compose logs -f wan22 | grep -m 1 -E "(Models download complete!|Models found in cache)"
+echo "Entrypoint completed. Running inference..."
+
+# Execute inference command
+docker compose exec wan22 python3 generate.py \
     --task t2v-A14B \
     --size "$SIZE" \
     --ckpt_dir /Wan2.2/checkpoints/Wan2.2-T2V-A14B \

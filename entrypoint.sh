@@ -15,7 +15,7 @@ if [ ! -d "/Wan2.2/checkpoints/Wan2.2-T2V-A14B" ]; then
         Wan-AI/Wan2.2-T2V-A14B \
         --local-dir /Wan2.2/checkpoints/Wan2.2-T2V-A14B \
 
-    echo "Model download complete!"
+    echo "Models download complete!"
 else
     echo "Models found in cache. Skipping download."
 fi
