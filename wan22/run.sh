@@ -22,10 +22,10 @@ docker compose pull
 
 # Start daemon container
 echo "Starting daemon container..."
-docker compose run -d wan22
+docker compose run -d --name wan22 wan22
 
 echo ""
 echo "=== Container Running ==="
-echo "sudo docker logs -f wan22-inference"
-echo "sudo docker attach wan22-inference"
+echo "sudo docker logs -f wan22"
+echo "sudo docker attach wan22"
 echo ""
