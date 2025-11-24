@@ -26,6 +26,7 @@ docker compose up -d wan22
 
 echo ""
 echo "=== Container Running ==="
-echo "sudo docker logs -f wan2-inference"
+echo "sudo docker logs -f wan22-inference"
 echo "sudo docker attach wan22-inference"
+echo "./download_model.sh [t2v|i2v|ti2va]  # to download models manually"
 echo ""

@@ -29,18 +29,18 @@ RUN pip install --no-cache-dir -r requirements_animate.txt
 RUN pip install --no-cache-dir "huggingface_hub[cli]"
 
 # Set environment variables for HuggingFace cache
-ENV HF_HOME=/Wan2.2
-ENV TRANSFORMERS_CACHE=/Wan2.2
+ENV HF_HOME=/workspace/wan2.2
+ENV TRANSFORMERS_CACHE=/workspace/wan2.2
 
 # Create Wan2.2 directory for checkpoints and outputs
-RUN mkdir -p /Wan2.2/checkpoints /Wan2.2/outputs
+RUN mkdir -p /workspace/wan2.2/checkpoints /workspace/wan2.2/outputs
 
 # Copy download script (user executes manually)
-COPY download_model.sh /download_model.sh
-RUN chmod +x /download_model.sh
+COPY download_model.sh /workspace/download_model.sh
+RUN chmod +x /workspace/download_model.sh
 
 # Set working directory
-WORKDIR /workspace/wan2.2
+WORKDIR /workspace
 
 # Start interactive bash shell
 CMD ["bash"]

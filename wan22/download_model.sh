@@ -13,7 +13,7 @@ echo "=== Wan2.2 Model Download ==="
 if [[ "$MODEL_TYPE" == "t2v" || "$MODEL_TYPE" == "ti2va" ]]; then
     if [ ! -d "/Wan2.2/checkpoints/Wan2.2-T2V-A14B" ]; then
         echo "Downloading T2V model (~126GB, may take ~15 minutes)..."
-        hf download Wan-AI/Wan2.2-T2V-A14B --local-dir /Wan2.2/checkpoints/Wan2.2-T2V-A14B
+        hf download Wan-AI/Wan2.2-T2V-A14B --local-dir /workspace/wan2.2/checkpoints/Wan2.2-T2V-A14B
         echo "T2V model download complete!"
     else
         echo "T2V model found in cache. Skipping."
@@ -24,7 +24,7 @@ fi
 if [[ "$MODEL_TYPE" == "i2v" || "$MODEL_TYPE" == "ti2va" ]]; then
     if [ ! -d "/Wan2.2/checkpoints/Wan2.2-I2V-A14B" ]; then
         echo "Downloading I2V model (~126GB, may take ~15 minutes)..."
-        hf download Wan-AI/Wan2.2-I2V-A14B --local-dir /Wan2.2/checkpoints/Wan2.2-I2V-A14B
+        hf download Wan-AI/Wan2.2-I2V-A14B --local-dir /workspace/wan2.2/checkpoints/Wan2.2-I2V-A14B
         echo "I2V model download complete!"
     else
         echo "I2V model found in cache. Skipping."

@@ -22,10 +22,6 @@ services:
     ulimits:
       memlock: -1
       stack: 67108864
-    volumes:
-      # Wan2.2 working directory (checkpoints, outputs, everything)
-      - /opt/Wan2.2:/Wan2.2
-    working_dir: /workspace/wan2.2
     stdin_open: true
     tty: true
     deploy:

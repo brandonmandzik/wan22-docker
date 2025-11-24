@@ -57,5 +57,4 @@ echo "docker run -itd \
     --privileged \
     -e NVIDIA_VISIBLE_DEVICES=all \
     -e PYTORCH_ALLOC_CONF=expandable_segments:True \
-    -v /opt/Wan2.2:/Wan2.2 \
     $REGISTRY_IMAGE"
