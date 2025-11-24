@@ -24,6 +24,8 @@ services:
       stack: 67108864
     stdin_open: true
     tty: true
+    volumes:
+      - /opt/outputs:/workspace/wan2.2/outputs
     deploy:
       resources:
         reservations:
