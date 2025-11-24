@@ -35,13 +35,12 @@ ENV TRANSFORMERS_CACHE=/Wan2.2
 # Create Wan2.2 directory for checkpoints and outputs
 RUN mkdir -p /Wan2.2/checkpoints /Wan2.2/outputs
 
-# Copy entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# Copy download script (user executes manually)
+COPY download_model.sh /download_model.sh
+RUN chmod +x /download_model.sh
 
 # Set working directory
 WORKDIR /workspace/wan2.2
 
-# Use entrypoint for model downloads
-ENTRYPOINT ["/entrypoint.sh"]
+# Start interactive bash shell
 CMD ["bash"]
