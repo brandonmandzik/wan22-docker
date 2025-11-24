@@ -15,7 +15,6 @@ provider "aws" {
 # AMI: Deep Learning Base OSS Nvidia Driver GPU AMI (Ubuntu 22.04)
 locals {
   dlami_id = "ami-0c9c917c544c180e8"
-  # dlami_id = "ami-06b6285d2e0210615" # Custom
 }
 
 # Security group for EC2 instance (SSM - no inbound ports needed)
