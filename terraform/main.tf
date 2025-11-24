@@ -113,7 +113,7 @@ resource "aws_instance" "wan22_inference" {
   iam_instance_profile   = aws_iam_instance_profile.ssm_profile.name
 
   root_block_device {
-    volume_size = 250
+    volume_size = 500
     volume_type = "gp3"
   }
 
