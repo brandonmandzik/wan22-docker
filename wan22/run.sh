@@ -22,7 +22,7 @@ docker compose pull
 
 # Start daemon container
 echo "Starting daemon container..."
-docker compose run -d wan22
+docker compose up -d wan22
 
 echo ""
 echo "=== Container Running ==="
