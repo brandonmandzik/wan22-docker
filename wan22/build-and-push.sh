@@ -39,10 +39,23 @@ echo "=== Build and Push Complete! ==="
 echo "Image available at: $REGISTRY_IMAGE"
 echo ""
 echo "To use this image:"
-echo "1. Update .env: MODE=pull"
-echo "2. Update .env: DOCKER_IMAGE=$REGISTRY_IMAGE"
-echo "3. Run: ./run.sh \"your prompt\""
+echo "1. Update .env: DOCKER_IMAGE=$REGISTRY_IMAGE"
+echo "2. Run: ./run.sh"
 echo ""
 echo "Or on any other machine:"
 echo "docker pull $REGISTRY_IMAGE"
-echo "docker run --gpus all -v ./outputs:/outputs $REGISTRY_IMAGE python generate.py ..."
+echo "docker run -itd \
+    --gpus all \
+    --init \
+    --net=host \
+    --uts=host \
+    --ipc=host \
+    --name wan22-inference \
+    --security-opt=seccomp=unconfined \
+    --ulimit=stack=67108864 \
+    --ulimit=memlock=-1 \
+    --privileged \
+    -e NVIDIA_VISIBLE_DEVICES=all \
+    -e PYTORCH_ALLOC_CONF=expandable_segments:True \
+    -v /opt/Wan2.2:/Wan2.2 \
+    $REGISTRY_IMAGE"
